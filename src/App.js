@@ -2,6 +2,7 @@ import "./App.css";
 import Button from "./components/Button/Button";
 import Input from "./components/Input/Input";
 import Card from "./components/Card/Card";
+import { useState } from "react";
 
 function App() {
   const buttonSend = () => console.log("Send");
@@ -45,6 +46,23 @@ function App() {
     },
   ];
 
+
+  const [count,setCount] = useState(0);
+  const [isShowCount, setIsShowCount] = useState(false);
+   
+  const incrementCount = () => {
+    setCount(count + 1);
+  };
+
+  const decrementCount = () => {
+    setCount(count - 1);
+  };
+  const resetCount = () => {
+    setCount(0);
+  };
+  const toggleVisibility = () => {
+    setIsShowCount(!isShowCount);
+  }
   return (
     <div>
       <div className="App">HELLO REACT</div>
@@ -55,6 +73,13 @@ function App() {
         {cources.map((cource, i) => (
           <Card key={i} cource={cource} />
         ))}
+      </div>
+      <div>
+        {isShowCount && <h1>Count: {count}</h1>}
+        <button onClick={toggleVisibility}>Count visibility</button>
+        <button onClick={incrementCount}>Increment</button>
+        <button onClick={decrementCount}>Decrement</button>
+        <button onClick={resetCount}>Reset</button>
       </div>
     </div>
   );
