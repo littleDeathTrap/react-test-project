@@ -3,6 +3,11 @@ import Button from "./components/Button/Button";
 import Input from "./components/Input/Input";
 import Card from "./components/Card/Card";
 import { useState } from "react";
+import Todo from './widget/Todo';
+import Example from './Example';
+import Users from "./components/Users";
+import Posts from "./components/Posts";
+import Albums from "./components/Albums";
 
 function App() {
   const buttonSend = () => console.log("Send");
@@ -81,6 +86,11 @@ function App() {
         <button onClick={decrementCount}>Decrement</button>
         <button onClick={resetCount}>Reset</button>
       </div>
+      <Todo />
+      {/*<Example />*/}
+      <Users />
+      <Posts />
+      <Albums />
     </div>
   );
 }

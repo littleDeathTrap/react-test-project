@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+.todo__item {
+  display: flex;
+  align-items: center;
+
+}
+.todo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 40vh;
+}
+.users {
+	margin: 50px;
+	padding: 20px;
+	border: 1px solid black;
+
+}
