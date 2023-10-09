@@ -3,11 +3,17 @@ import Button from "./components/Button/Button";
 import Input from "./components/Input/Input";
 import Card from "./components/Card/Card";
 import { useState } from "react";
-import Todo from './widget/Todo';
-import Example from './Example';
+import Todo from "./widget/Todo";
+import Example from "./Example";
 import Users from "./components/Users";
-import Posts from "./components/Posts";
+// import Posts from "./components/Posts";
 import Albums from "./components/Albums";
+import { Route, Routes } from "react-router-dom";
+import PostList from "./pages/PostList";
+import Post from "./pages/Post";
+import Home from "./pages/Home";
+import Header from "./pages/Header";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   const buttonSend = () => console.log("Send");
@@ -51,10 +57,9 @@ function App() {
     },
   ];
 
-
-  const [count,setCount] = useState(0);
+  const [count, setCount] = useState(0);
   const [isShowCount, setIsShowCount] = useState(false);
-   
+
   const incrementCount = () => {
     setCount(count + 1);
   };
@@ -67,7 +72,7 @@ function App() {
   };
   const toggleVisibility = () => {
     setIsShowCount(!isShowCount);
-  }
+  };
   return (
     <div>
       <div className="App">HELLO REACT</div>
@@ -89,8 +94,16 @@ function App() {
       <Todo />
       {/*<Example />*/}
       <Users />
-      <Posts />
+      {/* <Posts /> */}
       <Albums />
+    
+    <Header />
+        <Routes>
+          <Route path="/posts" element={<PostList />} />
+          <Route path="/posts/:id" element={<Post />} />
+          <Route path="/home" element={<Home />} />
+          <Route path='*' element={<PageNotFound />} />
+        </Routes>
     </div>
   );
 }
