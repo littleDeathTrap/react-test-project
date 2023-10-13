@@ -14,6 +14,8 @@ import Post from "./pages/Post";
 import Home from "./pages/Home";
 import Header from "./pages/Header";
 import PageNotFound from "./pages/PageNotFound";
+import FormikForm from "./components/forms/FormikForm";
+import CustomeForm from "./components/forms/CustomeForm";
 
 function App() {
   const buttonSend = () => console.log("Send");
@@ -59,11 +61,9 @@ function App() {
 
   const [count, setCount] = useState(0);
   const [isShowCount, setIsShowCount] = useState(false);
-
   const incrementCount = () => {
     setCount(count + 1);
   };
-
   const decrementCount = () => {
     setCount(count - 1);
   };
@@ -73,8 +73,9 @@ function App() {
   const toggleVisibility = () => {
     setIsShowCount(!isShowCount);
   };
+
   return (
-    <div>
+    <>
       <div className="App">HELLO REACT</div>
       <Input onChange={inputChange} />
       <Button text="Send" onClick={buttonSend}></Button>
@@ -96,15 +97,17 @@ function App() {
       <Users />
       {/* <Posts /> */}
       <Albums />
-    
-    <Header />
-        <Routes>
-          <Route path="/posts" element={<PostList />} />
-          <Route path="/posts/:id" element={<Post />} />
-          <Route path="/home" element={<Home />} />
-          <Route path='*' element={<PageNotFound />} />
-        </Routes>
-    </div>
+
+      <Header />
+      <Routes>
+        <Route path="/posts" element={<PostList />} />
+        <Route path="/posts/:id" element={<Post />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+      <CustomeForm />
+      <FormikForm />
+    </>
   );
 }
 

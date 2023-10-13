@@ -68,3 +68,17 @@ box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+form {
+margin: 40px;
+}
+label {
+	display: block;
+}
+input {
+	padding: 15px;
+	border: 1px solid black;
+
+}
+.error-message {
+color: red;
+}
