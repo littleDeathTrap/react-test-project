@@ -16,6 +16,7 @@ import Header from "./pages/Header";
 import PageNotFound from "./pages/PageNotFound";
 import FormikForm from "./components/forms/FormikForm";
 import CustomeForm from "./components/forms/CustomeForm";
+import ReactHookForm from "./components/forms/ReactHookForm";
 
 function App() {
   const buttonSend = () => console.log("Send");
@@ -107,6 +108,7 @@ function App() {
       </Routes>
       <CustomeForm />
       <FormikForm />
+      <ReactHookForm />
     </>
   );
 }
