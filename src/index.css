@@ -82,3 +82,11 @@ input {
 .error-message {
 color: red;
 }
+.light {
+	background-color: #e1dfdf;
+	color: rgb(20, 20, 20);
+}
+.dark {
+	color: #e1dfdf;
+	background-color: rgb(20, 20, 20);
+}

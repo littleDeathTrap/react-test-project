@@ -2,7 +2,7 @@ import "./App.css";
 import Button from "./components/Button/Button";
 import Input from "./components/Input/Input";
 import Card from "./components/Card/Card";
-import { useState } from "react";
+import { useState, createContext } from "react";
 import Todo from "./widget/Todo";
 import Example from "./Example";
 import Users from "./components/Users";
@@ -17,6 +17,11 @@ import PageNotFound from "./pages/PageNotFound";
 import FormikForm from "./components/forms/FormikForm";
 import CustomeForm from "./components/forms/CustomeForm";
 import ReactHookForm from "./components/forms/ReactHookForm";
+import Tasks from "./components/UseContext/Tasks";
+import Form from "./components/UseContext/Form";
+
+export const Context = createContext(null);
+export const ThemeContext = createContext(null);
 
 function App() {
   const buttonSend = () => console.log("Send");
@@ -75,6 +80,22 @@ function App() {
     setIsShowCount(!isShowCount);
   };
 
+  const [tasks, setTasks] = useState(["React"]);
+  const [mode, setMode] = useState("light");
+
+  const handleAddNewTask = (name) => {
+    const items = [...tasks, name];
+    setTasks(items);
+  };
+  const value = {
+    tasks: tasks,
+    onAddTask: handleAddNewTask,
+  };
+
+  const themeValue = {
+    mode: mode,
+    setMode: setMode,
+  };
   return (
     <>
       <div className="App">HELLO REACT</div>
@@ -109,6 +130,14 @@ function App() {
       <CustomeForm />
       <FormikForm />
       <ReactHookForm />
+      <div className={mode}>
+        <ThemeContext.Provider value={ themeValue }>
+          <Context.Provider value={value}>
+            <Form />
+            <Tasks />
+          </Context.Provider>
+        </ThemeContext.Provider>
+      </div>
     </>
   );
 }
