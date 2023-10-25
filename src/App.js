@@ -19,14 +19,17 @@ import CustomeForm from "./components/forms/CustomeForm";
 import ReactHookForm from "./components/forms/ReactHookForm";
 import Tasks from "./components/UseContext/Tasks";
 import Form from "./components/UseContext/Form";
+import CounterUseState from "./components/useState/CounterUseState";
+import CountUseReducer from "./components/UseReducer/CountUseReducer";
+
 
 export const Context = createContext(null);
 export const ThemeContext = createContext(null);
 
 function App() {
-  const buttonSend = () => console.log("Send");
-  const buttonDelete = () => console.log("Delete");
-  const inputChange = () => console.log("Input change");
+  // const buttonSend = () => console.log("Send");
+  // const buttonDelete = () => console.log("Delete");
+  // const inputChange = () => console.log("Input change");
 
   const cources = [
     {
@@ -65,21 +68,6 @@ function App() {
     },
   ];
 
-  const [count, setCount] = useState(0);
-  const [isShowCount, setIsShowCount] = useState(false);
-  const incrementCount = () => {
-    setCount(count + 1);
-  };
-  const decrementCount = () => {
-    setCount(count - 1);
-  };
-  const resetCount = () => {
-    setCount(0);
-  };
-  const toggleVisibility = () => {
-    setIsShowCount(!isShowCount);
-  };
-
   const [tasks, setTasks] = useState(["React"]);
   const [mode, setMode] = useState("light");
 
@@ -96,24 +84,40 @@ function App() {
     mode: mode,
     setMode: setMode,
   };
+
+ 
   return (
     <>
       <div className="App">HELLO REACT</div>
-      <Input onChange={inputChange} />
+
+      <Button variant="text">Text</Button>
+      <Button variant="contained">Contained</Button>
+      <Button variant="outlined">Outlined</Button>
+      <div>
+        <Button variant="text" disabled>
+          Text
+        </Button>
+        <Button variant="contained" disabled>
+          Text
+        </Button>
+        <Button variant="outlined" disabled>
+          Text
+        </Button>
+        <h3>Disabledcomponents</h3>
+        <Button variant="text" href="/">
+          Text
+        </Button>
+      </div>
+
+      {/* <Input onChange={inputChange} />
       <Button text="Send" onClick={buttonSend}></Button>
-      <Button text="Delete" onClick={buttonDelete}></Button>
+      <Button text="Delete" onClick={buttonDelete}></Button> */}
       <div className="list">
         {cources.map((cource, i) => (
           <Card key={i} cource={cource} />
         ))}
       </div>
-      <div>
-        {isShowCount && <h1>Count: {count}</h1>}
-        <button onClick={toggleVisibility}>Count visibility</button>
-        <button onClick={incrementCount}>Increment</button>
-        <button onClick={decrementCount}>Decrement</button>
-        <button onClick={resetCount}>Reset</button>
-      </div>
+      <CounterUseState />
       <Todo />
       {/*<Example />*/}
       <Users />
@@ -131,12 +135,18 @@ function App() {
       <FormikForm />
       <ReactHookForm />
       <div className={mode}>
-        <ThemeContext.Provider value={ themeValue }>
+        <ThemeContext.Provider value={themeValue}>
           <Context.Provider value={value}>
             <Form />
             <Tasks />
           </Context.Provider>
         </ThemeContext.Provider>
+       
+      </div>
+      
+      <div>
+        <h2>Reducer counter</h2>
+      <CountUseReducer />
       </div>
     </>
   );
