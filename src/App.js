@@ -21,7 +21,8 @@ import Tasks from "./components/UseContext/Tasks";
 import Form from "./components/UseContext/Form";
 import CounterUseState from "./components/useState/CounterUseState";
 import CountUseReducer from "./components/UseReducer/CountUseReducer";
-
+import CartPage from "./components/pages/CartPage";
+import HomePage from "./components/pages/HomePage";
 
 export const Context = createContext(null);
 export const ThemeContext = createContext(null);
@@ -85,7 +86,6 @@ function App() {
     setMode: setMode,
   };
 
- 
   return (
     <>
       <div className="App">HELLO REACT</div>
@@ -131,9 +131,11 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+
       <CustomeForm />
       <FormikForm />
       <ReactHookForm />
+
       <div className={mode}>
         <ThemeContext.Provider value={themeValue}>
           <Context.Provider value={value}>
@@ -141,12 +143,16 @@ function App() {
             <Tasks />
           </Context.Provider>
         </ThemeContext.Provider>
-       
       </div>
-      
+
       <div>
         <h2>Reducer counter</h2>
-      <CountUseReducer />
+        <CountUseReducer />
+      </div>
+
+      <div className="pages">
+        <HomePage />
+        <CartPage />
       </div>
     </>
   );

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -60,4 +61,15 @@
   justify-content: space-between;
   background-color: #e9e9e9;
   padding: 20px 10px;
+}
+.product{
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid black;
+}
+.pages {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  padding-top: 30px;
 }
