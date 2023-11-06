@@ -23,6 +23,8 @@ import CounterUseState from "./components/useState/CounterUseState";
 import CountUseReducer from "./components/UseReducer/CountUseReducer";
 import CartPage from "./components/pages/CartPage";
 import HomePage from "./components/pages/HomePage";
+import { useDispatch, useSelector } from "react-redux";
+import { increment, decrement, reset } from "./redux/counterSlice";
 
 export const Context = createContext(null);
 export const ThemeContext = createContext(null);
@@ -84,6 +86,20 @@ function App() {
   const themeValue = {
     mode: mode,
     setMode: setMode,
+  };
+
+  const dispatch = useDispatch();
+  const counter = useSelector((store) => store.counter);
+
+
+  const handleIncrement = () => {
+    dispatch(increment());
+  };
+  const handleDecrement = () => {
+    dispatch(decrement());
+  };
+  const handleReset = () => {
+    dispatch(reset());
   };
 
   return (
@@ -154,6 +170,13 @@ function App() {
         <HomePage />
         <CartPage />
       </div>
+
+      <h1>Counter value: {counter.value}</h1>
+
+      <button onClick={handleIncrement}>Increment</button>
+      <button onClick={handleDecrement}>Decrement</button>
+      <button onClick={handleReset}>Reset</button>
+      
     </>
   );
 }
